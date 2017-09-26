@@ -1,11 +1,8 @@
 Types::MutationType = GraphQL::ObjectType.define do
   name "Mutation"
 
-  # TODO: Remove me
-  field :testField, types.String do
-    description "An example field added by the generator"
-    resolve ->(obj, args, ctx) {
-      "Hello World!"
-    }
+  field :allLinks, !types[Types::LinkType] do
+    description "Return all link"
+    resolve ->(obj, args, ctx) { Link.all }
   end
 end
